@@ -11,7 +11,7 @@ title = "touch-to-unlock-32" #the title of manga as indicated in the URL
 chapter = "chapter-84-eng" #the chapter of manga as indicated in the URL
 ```
 
-To automatically download next chapter, set this to True.
+To automatically download next chapters, set this to True.
 ```python
 get_images(url, True)
 ```
