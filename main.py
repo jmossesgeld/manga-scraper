@@ -4,6 +4,16 @@ import time
 from bs4 import BeautifulSoup
 
 
+endpoint = "https://mangaforfree.net/manga"
+title = "touch-to-unlock-32"
+chapter = "chapter-84-eng"
+url = f"{endpoint}/{title}/{chapter}/"
+header = {
+    "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/94.0.4606.81 Safari/537.36",
+    "Accept-Language": "en-GB,en-US;q=0.9,en;q=0.8",
+}
+
+
 def get_images(url, next=False):
     ts = time.time()  # start timer
     _, _, _, _, title, chapter, _ = url.split('/')  # get directory names
@@ -38,14 +48,5 @@ def get_images(url, next=False):
         print(
             f"All images downloaded succesfully ({(time.time() - ts).__floor__()}s). Program is exiting.")
 
-
-endpoint = "https://mangaforfree.net/manga"
-title = "touch-to-unlock-32"
-chapter = "chapter-84-eng"
-url = f"{endpoint}/{title}/{chapter}/"
-header = {
-    "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/94.0.4606.81 Safari/537.36",
-    "Accept-Language": "en-GB,en-US;q=0.9,en;q=0.8",
-}
 
 get_images(url, True)
