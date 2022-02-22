@@ -2,11 +2,13 @@ import requests
 import os
 import time
 from bs4 import BeautifulSoup
+from bs4.element import NavigableString, Tag, ResultSet
+from typing import Iterable, cast
 
 # CONSTANTS
 endpoint = "https://mangaforfree.net/manga"
 title = "touch-to-unlock-44"
-chapter = "chapter-99-eng"
+chapter = "chapter-1"
 url = f"{endpoint}/{title}/{chapter}/"
 header = {
     "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/94.0.4606.81 Safari/537.36",
@@ -14,7 +16,7 @@ header = {
 }
 
 
-def get_images(url, next=False):
+def get_images(url: str, next=False):
     # start timer log
     ts = time.time()
 
@@ -27,14 +29,17 @@ def get_images(url, next=False):
 
     # create soup
     soup = BeautifulSoup(html_doc, 'html.parser')
-    reading_content = soup.find_all('div', class_="reading-content")[0]
+    reading_content: Tag = soup.find_all('div', class_="reading-content")[0]
 
     # get link of next chapter
-    next_url = soup.find('a', class_="next_page").get('href')
+    try:
+        next_url = soup.find('a', class_="next_page").get('href')
+    except:
+        next_url = False
 
     # get link of images
-    images = reading_content.find_all('img')
-    images_links = [i.get('src').strip() for i in images]
+    images: ResultSet = reading_content.find_all('img')
+    images_links = [i.get('src').strip() for i in cast(Iterable[Tag], images)]
     img_count = len(images_links)
     print(f"{img_count} image links retrieved.")
 
