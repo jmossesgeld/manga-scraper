@@ -3,15 +3,18 @@ Manga downloader for mangaforfree.net
 
 ## How to Use?
 
+### Install Python
+https://www.python.org/downloads/
+
+### Install dependencies
+- open the terminal.
+- cd into the repo directory
+- run `pip install requirements.txt`
+
 To download a manga of your choice, just replace the following in the main.py.
 
 ```python
-endpoint = endpoint = "https://mangaforfree.net/manga" #the website
-title = "touch-to-unlock-32" #the title of manga as indicated in the URL
-chapter = "chapter-84-eng" #the chapter of manga as indicated in the URL
+mangaforfree("https://mangaforfree.net/manga/{TITLE}/{CHAPTER}/", True)
 ```
-
-To automatically download next chapters, set this to True.
-```python
-get_images(url, True)
-```
+It is advisable to copy the link directly from the website to avoid typos.
+To automatically download next chapters, set download_next argument to True.
