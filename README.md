@@ -3,6 +3,14 @@ Manga downloader for mangaforfree.net
 
 ## How to Use?
 
+### Install Python
+https://www.python.org/downloads/
+
+### Install dependencies
+- open the terminal.
+- cd into the repo directory
+- run `pip install requirements.txt`
+
 To download a manga of your choice, just replace the following in the main.py.
 
 ```python
