@@ -10,7 +10,7 @@ header = {
 }
 
 
-def mangaforfree(url):
+def mangaforfree(url, download_next):
     # get title and chapter from url
     _, _, _, _, title, chapter, _ = url.split('/')
 
@@ -50,12 +50,12 @@ def mangaforfree(url):
                 file.write(img)
     else:
         print("RAW chapter found. Skipping...")
-    if next and next_url:
+    if download_next and next_url:
         # download next chapter by recursing this function
         mangaforfree(next_url, True)
     else:
         print(
-            f"All images downloaded succesfully. Program is exiting.")
+            f"All images were downloaded succesfully. Program is exiting.")
 
 
-mangaforfree("https://mangaforfree.net/manga/touch-to-unlock-45/chapter-1/")
+mangaforfree("https://mangaforfree.net/manga/single-again/chapter-2/", True)
