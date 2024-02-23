@@ -1,5 +1,6 @@
 import requests
 import os
+import argparse
 from bs4 import BeautifulSoup
 from bs4.element import Tag, ResultSet
 from typing import Iterable, cast
@@ -57,5 +58,11 @@ def mangaforfree(url, download_next):
         print(
             f"All images were downloaded succesfully. Program is exiting.")
 
+parser = argparse.ArgumentParser(description="Get the chapter URL and optionally download next chapters")
+parser.add_argument("chapterURL", help="The URL for the chapter you want to download")
+parser.add_argument("--next_chapter", action="store_true", default=False, dest="nextChapter", help="automatically download the next chapters")
+args = parser.parse_args()
 
-mangaforfree("https://mangaforfree.net/manga/single-again/chapter-2/", True)
+
+# mangaforfree("https://mangaforfree.net/manga/a001-noonas-taste/chapter-43/", True)
+mangaforfree(args.chapterURL, args.nextChapter)
