@@ -63,6 +63,4 @@ parser.add_argument("chapterURL", help="The URL for the chapter you want to down
 parser.add_argument("--next_chapter", action="store_true", default=False, dest="nextChapter", help="automatically download the next chapters")
 args = parser.parse_args()
 
-
-# mangaforfree("https://mangaforfree.net/manga/a001-noonas-taste/chapter-43/", True)
 mangaforfree(args.chapterURL, args.nextChapter)
